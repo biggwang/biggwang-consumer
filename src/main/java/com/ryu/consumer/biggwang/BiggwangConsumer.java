@@ -18,6 +18,6 @@ public class BiggwangConsumer {
     @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ALWAYS)
     public void consume(String json) throws JsonProcessingException {
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
-        log.info("messageVO:{}", messageVO.toString());
+        log.info("### messageVO:{}", messageVO.toString());
     }
 }
