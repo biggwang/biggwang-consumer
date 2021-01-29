@@ -5,7 +5,6 @@ plugins {
 }
 
 group = 'com.ryu.consumer'
-version = 'biggwang-consumer'
 sourceCompatibility = '1.8'
 
 configurations {
