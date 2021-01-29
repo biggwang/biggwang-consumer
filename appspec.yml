@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/build/
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: root
+    group: root
+
+hooks:
+  ApplicationStart:
+    - location: application_start.sh
+      timeout: 120
+      runas: root
