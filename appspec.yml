@@ -7,8 +7,8 @@ files:
 permissions:
   - object: /
     pattern: "**"
-    owner: appuser
-    group: appuser
+    owner: root
+    group: root
 
 hooks:
   ApplicationStart:
