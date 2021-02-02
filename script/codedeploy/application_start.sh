@@ -15,5 +15,5 @@ CURRENT_PID=$(pgrep -f $SERVICE_NAME)
 #fi
 
 #echo "> $APPLICATION_JAR 배포"
-#nohup java -jar /home/ec2-user/build/biggwang-consumer.jar > /dev/null 2> /dev/null < /dev/null &
-nohup java -jar /home/ec2-user/build/biggwang-consumer.jar &
+nohup java -jar /home/ec2-user/build/biggwang-consumer.jar > /dev/null 2> /dev/null < /dev/null &
+#nohup java -jar /home/ec2-user/build/biggwang-consumer.jar &
