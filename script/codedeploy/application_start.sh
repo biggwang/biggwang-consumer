@@ -1,4 +1,5 @@
 #!/bin/bash
+REPOSITORY=/home/ec2-user/build
 SERVICE_NAME=biggwang-consumer.jar
 SERVER_PORT=8080
 
@@ -16,4 +17,5 @@ fi
 
 #echo "> $APPLICATION_JAR 배포"
 #nohup java -jar /home/ec2-user/build/biggwang-consumer.jar > /dev/null 2> /dev/null < /dev/null &
-nohup java -jar /home/ec2-user/build/biggwang-consumer.jar &
+nohup java -jar $REPOSITORY/biggwang-consumer.jar > $REPOSITORY/nohup.out 2>&1 &
+
