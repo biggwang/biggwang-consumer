@@ -20,7 +20,6 @@ public class BiggwangConsumer {
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
         log.info("### 메시지 처리 시작 ------------------------------------------------------> ");
         log.info("### 메시지 내용:{}", messageVO.toString());
-//        Thread.sleep(messageVO.getDelayTime());
         log.info("### 메시지 처리 종료 <------------------------------------------------------");
         log.info("");
     }
