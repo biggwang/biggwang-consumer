@@ -18,10 +18,9 @@ public class BiggwangConsumer {
     @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void consume(String json) throws JsonProcessingException, InterruptedException {
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
-        log.info("### 메시지 처리 시작 ------------------------------------------------------> ");
-        log.info("### 메시지 내용:{}", messageVO.toString());
-//        Thread.sleep(messageVO.getDelayTime());
-        log.info("### 메시지 처리 종료 <------------------------------------------------------");
         log.info("");
+        log.info("### 메시지 처리 시작:{}", messageVO.toString());
+        Thread.sleep(messageVO.getDelayTime());
+        log.info("### 메시지 처리 종료");
     }
 }
