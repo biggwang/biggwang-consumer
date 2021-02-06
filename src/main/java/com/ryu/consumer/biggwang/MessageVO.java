@@ -23,4 +23,7 @@ public class MessageVO {
 
     @Builder.Default
     private Long delayTime = 0L;
+
+    @Builder.Default
+    private boolean error = false;
 }

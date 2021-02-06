@@ -16,11 +16,16 @@ public class BiggwangConsumer {
     private final ObjectMapper objectMapper;
 
     @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
-    public void consume(String json) throws JsonProcessingException, InterruptedException {
+    public void consume(String json) throws Exception {
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
         log.info("");
         log.info("### 메시지 처리 시작:{}", messageVO.toString());
         Thread.sleep(messageVO.getDelayTime());
+        if (messageVO.isError()) {
+            log.info("### 에러 발생 !!");
+            throw new Exception("error");
+        }
+
         log.info("### 메시지 처리 종료");
     }
 }
