@@ -17,9 +17,10 @@ public class BiggwangConsumer {
 
     @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void consume(String json) throws Exception {
-        MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
         log.info("");
-        log.info("### 메시지 처리 시작:{}", messageVO.toString());
+        log.info("### 메시지 처리 시작");
+        MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
+        log.info("### 메시지:{}", messageVO.toString());
         Thread.sleep(messageVO.getDelayTime());
         if (messageVO.isError()) {
             log.info("### 에러 발생 !!");
@@ -31,8 +32,9 @@ public class BiggwangConsumer {
 
     @SqsListener(value = "yungwang-deadletter.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void deadConsume(String json) throws Exception {
+        log.info("### 메시지 처리 시작");
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
-        log.info("### deadLetter 처리 시작:{}", messageVO.toString());
+        log.info("### 메시지:{}", messageVO.toString());
         Thread.sleep(messageVO.getDelayTime());
         log.info("### deadLetter 처리 종료");
     }
