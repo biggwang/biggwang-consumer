@@ -15,7 +15,7 @@ public class BiggwangConsumer {
 
     private final ObjectMapper objectMapper;
 
-    @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ALWAYS)
     public void consume(String json) throws Exception {
         log.info("");
         log.info("### 메시지 처리 시작");
