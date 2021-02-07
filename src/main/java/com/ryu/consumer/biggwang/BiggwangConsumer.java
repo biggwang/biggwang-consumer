@@ -15,7 +15,7 @@ public class BiggwangConsumer {
 
     private final ObjectMapper objectMapper;
 
-    @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ALWAYS)
+    @SqsListener(value = "yungwang.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void consume(String json) throws Exception {
         log.info("");
         log.info("### consume start");
@@ -29,7 +29,7 @@ public class BiggwangConsumer {
         log.info("### consume end");
     }
 
-    @SqsListener(value = "yungwang-deadletter.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    @SqsListener(value = "yungwang-deadletter.fifo", deletionPolicy = SqsMessageDeletionPolicy.ALWAYS)
     public void deadConsume(String json) throws Exception {
         log.info("### dead letter consume start");
         MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
