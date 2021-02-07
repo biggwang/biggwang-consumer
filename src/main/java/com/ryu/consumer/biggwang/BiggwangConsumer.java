@@ -28,4 +28,13 @@ public class BiggwangConsumer {
 
         log.info("### 메시지 처리 종료");
     }
+
+    @SqsListener(value = "yungwang-deadletter.fifo", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    public void deadConsume(String json) throws Exception {
+        MessageVO messageVO = objectMapper.readValue(json, MessageVO.class);
+        log.info("### deadLetter 처리 시작:{}", messageVO.toString());
+        Thread.sleep(messageVO.getDelayTime());
+        log.info("### deadLetter 처리 종료");
+    }
+
 }
