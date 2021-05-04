@@ -13,8 +13,8 @@ public class TestController {
     @GetMapping("/test")
     public String test() {
         LocalDateTime now = LocalDateTime.now();
-        log.warn("######################## gogo17:" + now);
-        return "gogo17:" + now;
+        log.warn("######################## gogo18:" + now);
+        return "gogo18:" + now;
     }
 
 }
